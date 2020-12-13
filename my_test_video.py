@@ -4,7 +4,7 @@
 # file    : my_test_video.py
 # modify time:
 import socket
-from StringIO import StringIO
+from io import StringIO
 
 import numpy as np
 import cv2
@@ -21,6 +21,7 @@ def view_local_video():
         ret, frame = cap.read()
         # 灰度化
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        print('gray', gray)
         # frame = cv2.flip(frame, 1)
         cv2.imshow('frame', gray)
 
@@ -36,10 +37,10 @@ def view_local_video():
 def src_camera():
     # 获取摄像头
     cap = cv2.VideoCapture(0)
+
     # 调整采集图像大小为640*480
     cap.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 640)
     cap.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 480)
-
     # 这里的HOST对应树莓派的IP地址（自己输入ifconfig查），端口号自己随便定一个即可，但注意后面的程序中要保持统一
 
     # 连接服务器
@@ -66,7 +67,6 @@ def src_camera():
         # time.sleep(0.2)
 
     sock.close()
-
 
 
 if __name__ == '__main__':
