@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 # create time    : 2020-12-08 17:14
 # author  : CY
-# file    : server_camera.py
+# file    : server_video.py
 # modify time:
 
 
 def server_camera():
+    """1"""
     import socket
     import time
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.bind(("192.168.0.113", 9999))  # 注意bind的这里，IP地址和端口号都要与前面的程序中一样
+    sock.bind(("192.168.0.104", 9999))  # 注意bind的这里，IP地址和端口号都要与前面的程序中一样
     sock.listen(2)  # 监听端口
 
     # 等待数据源端连接
@@ -37,3 +38,7 @@ def server_camera():
     src.close()
     dst.close()
     sock.close()
+
+
+if __name__ == '__main__':
+    server_camera()
