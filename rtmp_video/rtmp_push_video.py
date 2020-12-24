@@ -30,7 +30,7 @@ def stop_rtmp_push():
         if now_platform in 'win32':
             cmd = 'taskkill /F /IM ffmpeg.exe'
         elif now_platform == 'linux':
-            cmd = ''
+            cmd = 'kill -9 $(pidof ffmpeg)'
         else: raise Exception(f'not support {now_platform}')
         p = os.popen(cmd)
         print(p.read())
