@@ -23,7 +23,7 @@ def left_right_car(angle):
     print(f'{info}{angle}')
 
 
-def speed_car(car_status, speed='low'):
+def status_speed_car(car_status, speed='low'):
     """
     1 前进
     2 后退
@@ -39,4 +39,9 @@ def speed_car(car_status, speed='low'):
         IN2 = 0
         pwm = speed
     print(f'{info}in1{IN1}in2{IN2}speed{pwm}')
+
+
+def cat_status_stop():
+    """车辆停止前进or 后退"""
+    print('车辆运行状态停止')
 
