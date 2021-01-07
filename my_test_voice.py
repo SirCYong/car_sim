@@ -88,5 +88,5 @@ def read_voice(file_path):
 
 
 if __name__ == '__main__':
-    get_audio(in_path)
-    # read_voice(in_path)
+    # get_audio(in_path)
+    read_voice(in_path)
