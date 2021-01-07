@@ -11,6 +11,7 @@ from logs.save_logs import save_log
 from rtmp_video.rtmp_video_test import start_push_rtmp, stop_push_rtmp
 from steering.steering_test import on_down, left_right_camera, status_speed_car, left_right_car, cat_status_stop
 from tools.base_tools import get_now
+from voice.voice_demo import start_voice_demo, stop_voice_demo
 
 logger = save_log(filename='open_door')
 
@@ -50,6 +51,12 @@ class MqttSub(object):
                 thread = threading.Thread(target=start_push_rtmp)
             else:
                 thread = threading.Thread(target=stop_push_rtmp)
+            thread.start()
+        if 'voice' in sub_data.keys():
+            if sub_data['push_rtmp'] == 0:
+                thread = threading.Thread(target=start_voice_demo)
+            else:
+                thread = threading.Thread(target=stop_voice_demo)
             thread.start()
         if 'camera_up_down' in sub_data.keys():
             on_down(sub_data['camera_up_down']['angle'])
