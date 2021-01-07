@@ -13,6 +13,7 @@ GPIO.setwarnings(False)
 
 def set_servo_angle(servo, angle):
     """控制舵机"""
+    """17 最小值是68 最大值是179"""
     GPIO.setup(servo, GPIO.OUT)
     pwm = GPIO.PWM(servo, 50)
     pwm.start(8)
