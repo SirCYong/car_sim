@@ -13,7 +13,7 @@ class Server:
         while True:
             try:
                 # self.port = int(input('Enter port number to run on --> '))
-                self.port = 9808
+                self.port = 7899
 
                 self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 self.s.bind((self.ip, self.port))
