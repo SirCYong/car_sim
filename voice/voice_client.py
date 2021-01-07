@@ -17,7 +17,7 @@ class Client:
                 # self.target_ip = input('Enter IP address of server --> ')
                 # self.target_port = int(input('Enter target port of server --> '))
                 self.target_ip = '192.168.1.5'
-                self.target_port = 9808
+                self.target_port = 7899
 
                 self.s.connect((self.target_ip, self.target_port))
 
