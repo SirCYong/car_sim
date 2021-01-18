@@ -21,6 +21,10 @@ pwm.start(0)  # Start PWM and set the initial duty cycle to 0
 
 
 def control_360(angle=None):
+    """
+    设置pwm 的占空比
+    0.5 ms 正转 1.5 不转 2.5 逆转，如何设置
+    """
     try:
         while True:
             # direction = angle
