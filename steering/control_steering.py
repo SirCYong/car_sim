@@ -25,7 +25,8 @@ def set_servo_angle(foot, angle, max_angle=180):
     elif max_angle == 360: duty_cycle = (1 / 36) * angle + 2.5
     else: raise Exception(f"最大角度仅支持180与360，你的最大角度{max_angle}")
     pwm.ChangeDutyCycle(duty_cycle)
-    sleep(0.3)
+    if max_angle == 180: sleep(0.3)
+    else: sleep(0.02)
     pwm.stop()
     GPIO.cleanup()
 
