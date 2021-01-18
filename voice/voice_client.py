@@ -8,7 +8,7 @@ import threading
 import pyaudio
 
 
-class Client:
+class VoiceClient:
     def __init__(self):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -16,14 +16,14 @@ class Client:
             try:
                 # self.target_ip = input('Enter IP address of server --> ')
                 # self.target_port = int(input('Enter target port of server --> '))
-                self.target_ip = '192.168.1.5'
+                self.target_ip = 'ip or domain name'
                 self.target_port = 7899
 
                 self.s.connect((self.target_ip, self.target_port))
 
                 break
-            except:
-                print("Couldn't connect to server")
+            except Exception as e:
+                print(f"can't connect to server\n{e}")
 
         chunk_size = 1024  # 512
         audio_format = pyaudio.paInt16
@@ -47,7 +47,8 @@ class Client:
             try:
                 data = self.s.recv(1024)
                 self.playing_stream.write(data)
-            except:
+            except Exception as e:
+                # print(e)
                 pass
 
     def send_data_to_server(self):
@@ -55,8 +56,10 @@ class Client:
             try:
                 data = self.recording_stream.read(1024)
                 self.s.sendall(data)
-            except:
+            except Exception as e:
+                print(e)
                 pass
 
 
-client = Client()
+if __name__ == '__main__':
+    client = VoiceClient()

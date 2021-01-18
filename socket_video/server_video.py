@@ -3,16 +3,16 @@
 # author  : CY
 # file    : server_video.py
 # modify time:
+import socket
 
 
 def server_camera():
     """1"""
-    import socket
-    import time
-
+    HOST = socket.gethostbyname(socket.gethostname())
+    PORT = 9999
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.bind(("192.168.0.104", 9999))  # 注意bind的这里，IP地址和端口号都要与前面的程序中一样
-    sock.listen(2)  # 监听端口
+    sock.bind((HOST, PORT))  # 注意bind的这里，IP地址和端口号都要与前面的程序中一样
+    sock.listen(2)  # 开始监听 表示可以使用2个链接排队
 
     # 等待数据源端连接
     src, src_addr = sock.accept()

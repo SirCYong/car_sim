@@ -9,9 +9,6 @@ import numpy as np
 import cv2
 
 
-
-
-
 def view_local_video():
     # cap = cv2.VideoCapture('test.rmvb')  # 参数为0时调用本地摄像头；url连接调取网络摄像头；文件地址获取本地视频
     cap = cv2.VideoCapture(0)
